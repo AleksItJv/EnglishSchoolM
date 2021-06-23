@@ -1,58 +1,80 @@
 import connection.HibernateUtil;
 import entity.Groupst;
 import entity.Student;
+import entity.Teacher;
 import repository.GroupstRepository;
 import repository.StudentRepository;
+import repository.TeacherRepository;
 import service.GroupstService;
 import service.StudentService;
+import service.TeacherService;
 
 public class Main {
     public static void main(String[] args) {
 
-        StudentService sR = new StudentRepository();
+        StudentService sr = new StudentRepository();
         GroupstService gs = new GroupstRepository();
-/*        Student student = new Student();
-        Student student2 = new Student();
-        student.setIdGroup(1);
-        student.setFname("Oleg");
-        student.setSname("Nikolaevich");
-        student.setLname("Bogatov");
-        student.setPhone("103");
-        sR.saveStudent(student);
-        student2.setIdGroup(2);
-        student2.setFname("Oleg");
-        student2.setSname("Nikolaevich");
-        student2.setLname("Bogatov");
-        student2.setPhone("103");
-        sR.saveStudent(student2);*/
-        //System.out.println(sR.getStudent(1));
-        //System.out.println(sR.getStudent(2));
+        TeacherService ts = new TeacherRepository();
+
+
+
+/*        //add all to database
+        Teacher teacher = new Teacher("Zoya", "Abramovna", "Spelova", "+8099103");
+        Teacher teacher2 = new Teacher("Sara", "Aristarhovna", "Edelman", "+8099104");
+        ts.saveTeacher(teacher);
+        ts.saveTeacher(teacher2);
+
         Groupst group1 = new Groupst(1, "English", "oldSchool");
-        Groupst group2 = new Groupst(3, "English", "youngSchool");
+        Groupst group2 = new Groupst(1, "English", "youngSchool");
         Groupst group3 = new Groupst(2, "Spanish", "youngSchool");
         gs.addGroupst(group1);
         gs.addGroupst(group2);
         gs.addGroupst(group3);
 
-        Student student = new Student();
-        student.setIdGroupst(2);
-        student.setFname("Ol");
-        student.setSname("Nik");
-        student.setLname("Bog");
-        student.setPhone("1");
-        sR.saveStudent(student);
-        sR.saveStudent(student);
+
+        Student student = new Student(2,"Alex", "Fox", "Builder", "101");
+        Student student2 = new Student(1, "Ol", "Nik", "Bog","102");
+
+        Student student3 = new Student();
+        student3.setIdGroupst(1);
+        student3.setFname("Oleg");
+        student3.setSname("Nikolaevich");
+        student3.setLname("Bogatov");
+        student3.setPhone("103");
+
+        Student student4 = new Student();
+        student4.setIdGroupst(2);
+        student4.setFname("Jacov");
+        student4.setSname("Nikolaevich");
+        student4.setLname("Istomin");
+        student4.setPhone("104");
+
+        sr.saveStudent(student);
+        sr.saveStudent(student2);
+        sr.saveStudent(student3);
+        sr.saveStudent(student4);*/
+
+/*        System.out.println(sr.getStudent(1));
+        System.out.println(sr.getStudent(2));
 
         Student studik = new Student(2, "qwe", "qwer", "qwerty", "123123");
-        sR.updateStudent(1, studik);
+        sr.updateStudent(1, studik);
 
-        sR.deleteStudentByID(18);
+        sr.deleteStudentByID(18);*/
 
-        for (Student st : sR.getAllStudents()) {
-            System.out.println(st);
+/*        //test teachers
+        Teacher teacherok = new Teacher("fnfnfn", "mn", "ln", "phn");
+        ts.updateTeacher(1, teacherok);
+        for (Teacher t : ts.getAllTeachers()) {
+            System.out.println(t);
         }
 
-        for (Student st : sR.getAllStudentsByGroup(2)) {
+        ts.deleteTeacherByID(3);
+        for (Teacher t : ts.getAllTeachers()) {
+            System.out.println(t);
+        }*/
+
+        for (Student st : sr.getAllStudents()) {
             System.out.println(st);
         }
 

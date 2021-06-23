@@ -12,7 +12,7 @@ public interface TeacherService {
 
     List<Teacher> getAllTeachers();
 
-    void updateTeacher(long id, Teacher student);
+    void updateTeacher(long id, Teacher teacher);
 
     void deleteTeacherByID(long id);
 

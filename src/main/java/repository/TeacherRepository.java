@@ -2,6 +2,7 @@ package repository;
 
 import connection.HibernateUtil;
 import entity.Groupst;
+import entity.Student;
 import entity.Teacher;
 import org.hibernate.Session;
 import service.TeacherService;
@@ -41,12 +42,32 @@ public class TeacherRepository implements TeacherService {
     }
 
     @Override
-    public void updateTeacher(long id, Teacher student) {
+    public void updateTeacher(long id, Teacher teacher) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
 
+        Teacher teacherUp;
+        if ((teacherUp = session.get(Teacher.class, id)) != null) {
+            teacherUp.setFirstName(teacher.getFirstName());
+            teacherUp.setMidName(teacher.getMidName());
+            teacherUp.setLastName(teacher.getLastName());
+            teacherUp.setPhone(teacher.getPhone());
+
+            session.saveOrUpdate(teacherUp);
+        }
+        session.getTransaction().commit();
     }
 
     @Override
     public void deleteTeacherByID(long id) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
 
+        Teacher teacherUp;
+        if ((teacherUp = session.get(Teacher.class, id)) != null) {
+            session.delete(teacherUp);
+        }
+        session.getTransaction().commit();
+        session.close();
     }
 }

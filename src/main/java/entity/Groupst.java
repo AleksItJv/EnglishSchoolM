@@ -17,11 +17,11 @@ public class Groupst {
     private String ageGroupst;
 
 
-    @OneToMany(mappedBy = "groupst", fetch = FetchType.EAGER)//, cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "groupst", fetch = FetchType.EAGER)
     private List<Student> studentList = new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "teacher_id", referencedColumnName = "id")
+    @JoinColumn(name = "teacher_id", referencedColumnName = "id", insertable = false, updatable = false)
     private Teacher teacher;
 
     public Groupst() {
